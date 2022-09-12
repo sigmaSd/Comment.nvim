@@ -8,7 +8,7 @@ on:
       - master
 
 env:
-  PLUGIN_NAME: Comment
+  DOC: doc/Comment.txt
 
 jobs:
   docs:
@@ -18,11 +18,12 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Generating help
+        shell: bash
         run: |
           curl -Lq https://github.com/numToStr/lemmy-help/releases/latest/download/lemmy-help-x86_64-unknown-linux-gnu.tar.gz | tar xz
           ./lemmy-help -fact \
             lua/Comment/{init.lua,config.lua} plugin/Comment.lua \
-            lua/Comment/{api.lua,ft.lua,utils.lua,opfunc.lua,extra.lua} > doc/${{env.PLUGIN_NAME}}.txt
+            lua/Comment/{api.lua,ft.lua,utils.lua,opfunc.lua,extra.lua} > ${{env.DOC}}
 
       - name: Commit
         uses: stefanzweifel/git-auto-commit-action@v4

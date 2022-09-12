@@ -12,7 +12,7 @@
 
 local A = vim.api
 
----Common commentstring shared b/w mutliple languages
+---Common commentstring shared b/w multiple languages
 local M = {
     cxx_l = '//%s',
     cxx_b = '/*%s*/',
@@ -29,7 +29,7 @@ local M = {
     lisp_b = '#|%s|#',
 }
 
----Lang table that contains commentstring (linewise/blockwise) for mutliple filetypes
+---Lang table that contains commentstring (linewise/blockwise) for multiple filetypes
 ---Structure = { filetype = { linewise, blockwise } }
 ---@type table<string,string[]>
 local L = setmetatable({
@@ -161,7 +161,7 @@ end
 ---@param lang string Filetype/Language of the buffer
 ---@param ctype? integer See |comment.utils.ctype|. If given `nil`, it'll
 ---return a copy of { line, block } commentstring.
----@return nil|string|string[] _ Commentstring
+---@return nil|string|string[] #Commentstring
 ---@usage [[
 ---local ft = require('Comment.ft')
 ---local U = require('Comment.utils')
@@ -196,7 +196,7 @@ end
 ---@param tree userdata Parse tree to be walked
 ---@param range integer[] Range to check
 ---{start_row, start_col, end_row, end_col}
----@return userdata _ Returns a |treesitter-languagetree|
+---@return userdata #Returns a |treesitter-languagetree|
 ---@see treesitter-languagetree
 ---@see lua-treesitter-core
 ---@usage [[
@@ -217,7 +217,7 @@ end
 
 ---Calculate commentstring with the power of treesitter
 ---@param ctx CommentCtx
----@return nil|string _ Commentstring
+---@return nil|string #Commentstring
 ---@see comment.utils.CommentCtx
 function ft.calculate(ctx)
     local buf = A.nvim_get_current_buf()
